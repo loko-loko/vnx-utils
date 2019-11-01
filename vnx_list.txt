@@ -1,0 +1,3 @@
+#ID               TYPE  DNS               IP
+CKM00000000001    Pool  vnx1spa,vnx2spb   1.1.1.1,1.1.1.2
+CKM00000000002    Raid  vnx1spa,vnx2spb   1.1.1.6,1.1.1.7
