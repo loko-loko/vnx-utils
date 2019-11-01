@@ -34,7 +34,9 @@ user_info_r(){
 }
 
 declare_tmp_file(){
-    
+   
+    [[ ! -e $TMP_DIR ]] && mkdir -p $TMP_DIR
+  
     for TMP_FILE in ${TMP_FILE_LIST_ARRAY[@]}; do
         
         local TMP_FILE_NAME_RESIZE=$(echo $TMP_FILE | awk -F'_' '{printf "%s_%s", $1, $2}' | tr 'A-Z' 'a-z')
@@ -70,7 +72,7 @@ declare_log_file(){
     
     LOG_FILE="$LOG_DIR/log_${SCRIPT_NAME}_${YEAR_N}_W${WEEK_NUMBER}.log"
     
-    [[ ! -e $LOG_DIR ]] && mkdir $LOG_DIR
+    [[ ! -e $LOG_DIR ]] && mkdir -p $LOG_DIR
     [[ ! -e $LOG_FILE ]] && > $LOG_FILE
     
 }

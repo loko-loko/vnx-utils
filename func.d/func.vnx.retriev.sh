@@ -34,13 +34,13 @@ select_mode_bay(){ #NO ARG
     text 1 " + Retrieving Bay List \c"
     
     if [[ $_OPT_MODE =~ Info|Remove ]]; then
-        local BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ {print $1}' /sansto/etc/vnx/vnx_utils_list.txt))
+        local BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ {print $1}' $VNX_LIST_FILE))
         
     elif [[ $_OPT_MODE == 'Create' ]]; then
-        BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ && $2 == "Pool" {print $1}' /sansto/etc/vnx/vnx_utils_list.txt))
+        BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ && $2 == "Pool" {print $1}' $VNX_LIST_FILE))
     
     elif [[ $_OPT_MODE == 'Modify' ]]; then
-        BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ && $3 == "E" {print $1}' /sansto/etc/vnx/vnx_utils_list.txt))
+        BAY_LIST_ARRAY=($(awk '$0 ~ /CKM/ && $3 == "E" {print $1}' $VNX_LIST_FILE))
     
     fi
     

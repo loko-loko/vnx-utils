@@ -17,7 +17,7 @@ NAVICLI_PATH='/opt/Navisphere/bin'
 
 SG_WEEK_TMP="SG_${SCRIPT_NAME}_week_${WEEK_NUMBER}_temp"
 
-[[ $(whoami) != 'root' ]] && { echo -e  "! Must be root to run $0"; exit 1; }
+# [[ $(whoami) != 'root' ]] && { echo -e  "! Must be root to run $0"; exit 1; }
 
 SRC_FILE_LIST_ARRAY=(
     "func.d/func.global.sh"
@@ -34,14 +34,14 @@ for SRC_FILE in ${SRC_FILE_LIST_ARRAY[@]}; do
     source ${SCRIPT_HOME}/${SRC_FILE}
 done
 
-VNX_LIST_FILE="/sansto/etc/vnx/vnx_utils_list.txt"
+VNX_LIST_FILE="$SCRIPT_HOME/vnx_list.txt"
 
 [[ ! -e ${VNX_LIST_FILE} ]] && { echo -e " ! file \"${VNX_LIST_FILE}\" not find. Exit()"; exit 1; }
 
 alias_var_d
 
-TMP_DIR="/sansto/tmp/vnx/vnx_utils"
-LOG_DIR="/sansto/logs/vnx/vnx_utils"
+TMP_DIR="/tmp/vnx_utils"
+LOG_DIR="$SCRIPT_HOME/logs/vnx_utils"
 TMP_FILE_LIST_ARRAY=(
     "ARRAY_INFO_TMP"
     "RETURNCMD_LOG_FILE_TMP"
